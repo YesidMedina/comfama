@@ -9,7 +9,7 @@ const Header = () => {
       <AppBar position="absolute">
         <Toolbar sx={{ mt: 2}}>
         <img src="natuto.webp" width={80} height={80} sx={{ mt: -12 }} />  
-          <Typography sx={{ ml: 8 }} variant="h4">Naruto Uzumaki</Typography>
+          <Typography sx={{ ml: 4 }} variant="h4">Mas de 25 mil Animes!!</Typography>
         </Toolbar>
       </AppBar>
     </Grid>

@@ -17,7 +17,7 @@ function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <Paper>
+      <Paper style={{ minHeight: "100vh" }}>
         <Header />
         <Switch
           checked={darkMode}

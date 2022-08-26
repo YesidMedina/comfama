@@ -12,7 +12,7 @@ const Search = () => {
 
   const handleChange = (event) => {
     setShowClearIcon(event.target.value === "" ? "none" : "flex");
-    
+
     handleChangeSearch(event.target.value);
   };
 
@@ -29,10 +29,7 @@ const Search = () => {
             </InputAdornment>
           ),
           endAdornment: (
-            <InputAdornment
-              position="start"
-              style={{ display: showClearIcon }}
-            >
+            <InputAdornment position="start" style={{ display: showClearIcon }}>
               <ClearIcon />
             </InputAdornment>
           ),

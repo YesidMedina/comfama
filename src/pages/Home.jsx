@@ -5,12 +5,12 @@ import Search from "../components/Search";
 
 const Home = () => {
   return (
-    <Container >
-      <AnimeProvider >
-          <Grid >
-            <Search />
-          </Grid>
-        <Grid item mt={2} >
+    <Container>
+      <AnimeProvider>
+        <Grid item lg={6}>
+          <Search />
+        </Grid>
+        <Grid item>
           <ListChapter />
         </Grid>
       </AnimeProvider>

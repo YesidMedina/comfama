@@ -8,23 +8,22 @@ export const NextInformation = () => {
   const [informationChapter] = useState(
     JSON.parse(window.localStorage.getItem("chapter"))
   );
-  const [message, setMessage] = useState('')
+  const [message, setMessage] = useState("");
 
   const {
-    images:{jpg:{image_url}},
+    images: {
+      jpg: { image_url },
+    },
     title,
     score,
     duration,
     synopsis,
-    titles:{type},
-    
   } = informationChapter;
 
-  useEffect(()=>{
-    getMessageScore(score).then((data)=>setMessage(data));
-    
-  },[message])
-  
+  useEffect(() => {
+    getMessageScore(score).then((data) => setMessage(data));
+  }, [message]);
+
   return (
     <Container>
       <Button
@@ -38,18 +37,19 @@ export const NextInformation = () => {
       </Button>
 
       <Grid container>
-        <Grid item width={300} height={300} sx={{ mx: -12 }} >
+        <Grid item width={300} height={300} sx={{ mx: -12 }}>
           <CardMedia component="img" image={image_url} />
         </Grid>
 
-        <Grid sx={{ mt: -32, ml: 32 }}>
-          <Typography variant="h4">{title}</Typography>
-          <Typography variant="h6">Puntuacion: {score} - {message}</Typography>
-          <Typography variant="h6">Duración: {duration}</Typography>
-          <Typography variant="body1">{synopsis}</Typography>
-          <Typography variant="h6">
-            Lenguages: {type}
+        <Grid sx={{ mt: -36, ml: 32 }}>
+          <Typography sx={{ border: 1 }} color="primary" variant="h6">
+            {message} _Score: {score}
           </Typography>
+          <Typography variant="h4">{title}</Typography>
+          <Typography variant="h6">Score: {score}</Typography>
+          <Typography variant="h6">Time: {duration}</Typography>
+          <Typography variant="body1">{synopsis}</Typography>
+          <Typography variant="h6">Lenguages:</Typography>
           <Grid item>
             <Typography variant="body2">
               <Button
@@ -58,7 +58,7 @@ export const NextInformation = () => {
                 disabled
                 style={{ marginBottom: 20 }}
               >
-                France
+                Japanese
               </Button>
               <Button
                 variant="outlined"
@@ -66,7 +66,7 @@ export const NextInformation = () => {
                 disabled
                 style={{ marginBottom: 20 }}
               >
-                Germany
+                English
               </Button>
               <Button
                 variant="outlined"

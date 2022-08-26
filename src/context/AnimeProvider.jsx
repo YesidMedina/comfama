@@ -7,12 +7,13 @@ const AnimeProvider = ({ children }) => {
   const [category, setCategory] = useState("naruto");
   const [info, setInfo] = useState([]);
   const [informationChapter] = useState({});
-  const [searchInfo, setSearchInfo] = useState("");
 
   useEffect(() => {
     const consultAPI = async () => {
       try {
-        const { data } = await axios.get(`http://localhost:8000/api/anime/total`);
+        const { data } = await axios.get(
+          `http://localhost:8000/api/anime/total`
+        );
         setInfo(data);
       } catch (error) {
         console.error(error);
@@ -24,8 +25,10 @@ const AnimeProvider = ({ children }) => {
   const handleChangeSearch = async (search) => {
     try {
       if (search.length > 3) {
-        const data = await axios.get(`http://localhost:8000/api/anime/filter?q=${search}`);
-        setInfo(data);
+        const data = await axios.get(
+          `http://localhost:8000/api/anime/filter?q=${search}`
+        );
+          setInfo(data);
       }
     } catch (error) {
       console.error(error);
@@ -41,13 +44,16 @@ const AnimeProvider = ({ children }) => {
   };
 
   const getMessageScore = async (score) => {
-    try {
-      const { data } = await axios.get(`http://localhost:8000/api/anime/score?score=${score}`);
-      return data;
-    } catch (error) {
-      console.error(error);
-    }
-  }
+      try {
+        const { data } = await axios.get(
+          `http://localhost:8000/api/anime/score?score=${score}`
+        );
+
+        return data;
+      } catch (error){
+         console.error(error);
+      }
+    };
 
   return (
     <AnimeContext.Provider
@@ -58,7 +64,7 @@ const AnimeProvider = ({ children }) => {
         getInformationChapter,
         informationChapter,
         handleChangeSearch,
-        getMessageScore
+        getMessageScore,
       }}
     >
       {children}

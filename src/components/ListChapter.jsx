@@ -1,24 +1,26 @@
-import { useEffect } from "react";
-import { Grid, Slider, Typography, Button } from "@mui/material";
-import CarouselSlider from "react-material-ui-carousel";
+import { Grid, Typography } from "@mui/material";
+import Carousel from "react-material-ui-carousel";
 import useAnime from "../hooks/useAnime";
 import { Information } from "./Information";
 
-
 export const ListChapter = () => {
   const { info } = useAnime();
-  console.log(info)
 
   return (
     <>
-      <Typography></Typography>
-      <Grid item width={200} height={200} sx={{ mt: 6, ml: 10 }}>
-        <CarouselSlider>
-          {info?.data?.map((information, i) => (
-            <Information key={i} information={information} />
-          ))}
-        </CarouselSlider>
+      <Typography marginY={6}></Typography>
+      <Grid container spacing={6}>
+        {info?.data?.map((information, index) => (
+          <Information key={index} information={information} />
+        ))}
       </Grid>
+      {/* <Grid item width={200} height={200} sx={{ mt: 6, ml: 10 }}>
+        <Carousel>
+          {info?.data?.map((information, index) => (
+            <Information key={index} information={information} />
+          ))}
+        </Carousel>
+      </Grid> */}
     </>
   );
 };
