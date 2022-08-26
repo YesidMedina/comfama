@@ -3,10 +3,10 @@ import { InputAdornment, TextField, FormControl } from "@mui/material";
 import SearchIcon from "@material-ui/icons/Search";
 import ClearIcon from "@material-ui/icons/Clear";
 
-import useContinet from "../hooks/useContinent";
+import useAnime from "../hooks/useAnime";
 
 const Searchbq = () => {
-  const { handleChangeSearch } = useContinet();
+  const { handleChangeSearch } = useAnime();
 
   const [showClearIcon, setShowClearIcon] = useState("none");
 
@@ -23,7 +23,7 @@ const Searchbq = () => {
         onChange={handleChange}
         InputProps={{
           startAdornment: (
-            <InputAdornment position="end">
+            <InputAdornment position="start">
               <SearchIcon />
             </InputAdornment>
           ),

@@ -1,5 +1,5 @@
 import { Container, Grid } from "@mui/material";
-import { ContinentProvider } from "../context/ContinentProvider";
+import { AnimeProvider } from "../context/AnimeProvider";
 import ListNext from "../components/ListNext";
 import Header from "../components/Header";
 
@@ -8,9 +8,9 @@ function Next() {
     <Grid>
       <Header />
       <Container>
-        <ContinentProvider>
+        <AnimeProvider>
           <ListNext />
-        </ContinentProvider>
+        </AnimeProvider>
       </Container>
     </Grid>
   );

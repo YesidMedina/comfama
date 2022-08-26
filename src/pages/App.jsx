@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Paper, Switch } from "@mui/material";
+import { Grid, imageListItemClasses, Paper, Switch } from "@mui/material";
 import { Routes, Route } from "react-router-dom";
 import Header from "../components/Header";
 import Home from "./Home";
@@ -17,9 +17,13 @@ function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <Paper style={{ minHeight: "100vh" }}>
+      <Paper>
         <Header />
-        <Switch checked={darkMode} onChange={() => setDarkMode(!darkMode)} />
+        <Switch
+          checked={darkMode}
+          onChange={() => setDarkMode(!darkMode)}
+          sx={{ mt: 6 }}
+        />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/Next" element={<Next />} />

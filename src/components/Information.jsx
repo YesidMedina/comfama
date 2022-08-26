@@ -1,28 +1,27 @@
-import { Card, CardActions, CardContent, CardMedia } from "@mui/material";
+import { Card, CardActions, CardContent, CardMedia, ImageList } from "@mui/material";
 import { Link, Typography, Grid } from "@mui/material";
-import useContinent from "../hooks/useContinent";
+import useAnime from "../hooks/useAnime";
 
 export const Information = ({ information }) => {
-  const { getInformationCountry } = useContinent();
-  const { flags, name, population, region, capital } = information;
+  const { getInformationChapter } = useAnime();
+  const { images:{jpg:{image_url}}, title } = information;
   
   return (
-    <Grid item md={3} lg={3}>
+    <Grid item md={6} lg={6} >
       <Card>
         <Link
           href="/Next"
           onClick={() => {
-            getInformationCountry(information);
+            getInformationChapter(information);
           }}
-          key={information.name.common}
+          // key={info}
         >
-          <CardMedia component="img" image={flags.png} height={"120"} />
+        <Grid >
+          <CardMedia component="img" image={image_url} />
+        </Grid>  
         </Link>
         <CardContent>
-          <Typography variant="h6">{name.common}</Typography>
-          <Typography variant="body2">Population: {population}</Typography>
-          <Typography variant="body2">Region: {region}</Typography>
-          <Typography variant="body2">Capital: {capital}</Typography>
+          <Typography variant="h6">{title}</Typography>
         </CardContent>
         <CardActions></CardActions>
       </Card>

@@ -1,16 +1,16 @@
 import { Grid, Typography } from "@mui/material";
-import useContinent from "../hooks/useContinent";
+import useAnime from "../hooks/useAnime";
 import { NextInformation } from "./NextInformation";
 
 export const ListNext = () => {
-  const { informationCountry } = useContinent();
+  const { informationChapter } = useAnime();
 
   return (
     <>
       <Typography marginY={6}></Typography>
 
       <Grid container spacing={3}>
-        <NextInformation informationCountry={informationCountry} />
+        <NextInformation informationChapter={informationChapter} />
       </Grid>
     </>
   );

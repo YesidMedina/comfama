@@ -3,21 +3,19 @@ import { Button, CardMedia, Container, Typography, Grid } from "@mui/material";
 import KeyboardArrowLeftIcon from "@mui/icons-material/KeyboardArrowLeft";
 
 export const NextInformation = () => {
-  const [informationCountry] = useState(
-    JSON.parse(window.localStorage.getItem("country"))
+  const [informationChapter] = useState(
+    JSON.parse(window.localStorage.getItem("chapter"))
   );
 
   const {
-    flags,
-    name,
-    population,
-    region,
-    capital,
-    subregion,
-    languages,
-    currencies,
-    tld,
-  } = informationCountry;
+    images:{jpg:{image_url}},
+    title,
+    score,
+    duration,
+    synopsis,
+    titles:{type},
+    
+  } = informationChapter;
   return (
     <Container>
       <Button
@@ -31,29 +29,20 @@ export const NextInformation = () => {
       </Button>
 
       <Grid container>
-        <Grid item width={400} height={400}>
-          <CardMedia component="img" image={flags?.png} />
+        <Grid item width={300} height={300} sx={{ mx: -12 }} >
+          <CardMedia component="img" image={image_url} />
         </Grid>
 
-        <Grid item marginLeft={15}>
-          <Typography variant="h4">{name?.common}</Typography>
-          <Typography variant="body1">Population: {population}</Typography>
-          <Typography variant="body1">Region: {region}</Typography>
-          <Typography variant="body1">Capital: {capital}</Typography>
-          <Typography variant="body1">Sub region: {subregion}</Typography>
-          <Typography variant="body1">
-            Lenguages: {Object.values(languages).join(" ")}
+        <Grid sx={{ mt: -32, ml: 32 }}>
+          <Typography variant="h4">{title}</Typography>
+          <Typography variant="h6">Puntuacion: {score}</Typography>
+          <Typography variant="h6">Duración: {duration}</Typography>
+          <Typography variant="body1">{synopsis}</Typography>
+          <Typography variant="h6">
+            Lenguages: {type}
           </Typography>
-          <Typography variant="body1">
-            Currences:
-            {Object.values(currencies)
-              .map((cur) => cur.name)
-              .join(" ")}
-          </Typography>
-          <Typography variant="body1">Top level Domain: {tld[0]}</Typography>
           <Grid item>
             <Typography variant="body2">
-              Border Actions:
               <Button
                 variant="outlined"
                 color="inherit"
