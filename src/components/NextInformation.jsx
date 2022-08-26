@@ -1,11 +1,14 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Button, CardMedia, Container, Typography, Grid } from "@mui/material";
 import KeyboardArrowLeftIcon from "@mui/icons-material/KeyboardArrowLeft";
+import useAnime from "../hooks/useAnime";
 
 export const NextInformation = () => {
+  const { getMessageScore } = useAnime();
   const [informationChapter] = useState(
     JSON.parse(window.localStorage.getItem("chapter"))
   );
+  const [message, setMessage] = useState('')
 
   const {
     images:{jpg:{image_url}},
@@ -16,6 +19,12 @@ export const NextInformation = () => {
     titles:{type},
     
   } = informationChapter;
+
+  useEffect(()=>{
+    getMessageScore(score).then((data)=>setMessage(data));
+    
+  },[message])
+  
   return (
     <Container>
       <Button
@@ -35,7 +44,7 @@ export const NextInformation = () => {
 
         <Grid sx={{ mt: -32, ml: 32 }}>
           <Typography variant="h4">{title}</Typography>
-          <Typography variant="h6">Puntuacion: {score}</Typography>
+          <Typography variant="h6">Puntuacion: {score} - {message}</Typography>
           <Typography variant="h6">Duración: {duration}</Typography>
           <Typography variant="body1">{synopsis}</Typography>
           <Typography variant="h6">

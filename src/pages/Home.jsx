@@ -1,14 +1,14 @@
 import { Container, Grid } from "@mui/material";
 import { AnimeProvider } from "../context/AnimeProvider";
 import { ListChapter } from "../components/ListChapter";
-import Searchbq from "../components/Searchbq";
+import Search from "../components/Search";
 
 const Home = () => {
   return (
     <Container >
       <AnimeProvider >
           <Grid >
-            <Searchbq />
+            <Search />
           </Grid>
         <Grid item mt={2} >
           <ListChapter />

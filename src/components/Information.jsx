@@ -4,6 +4,7 @@ import useAnime from "../hooks/useAnime";
 
 export const Information = ({ information }) => {
   const { getInformationChapter } = useAnime();
+  
   const { images:{jpg:{image_url}}, title } = information;
   
   return (

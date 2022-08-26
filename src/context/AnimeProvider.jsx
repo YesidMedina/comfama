@@ -11,9 +11,8 @@ const AnimeProvider = ({ children }) => {
 
   useEffect(() => {
     const consultAPI = async () => {
-      const url = `${import.meta.env.VITE_API}`;
       try {
-        const { data } = await axios.get(url);
+        const { data } = await axios.get(`http://localhost:8000/api/anime/total`);
         setInfo(data);
       } catch (error) {
         console.error(error);
@@ -22,20 +21,15 @@ const AnimeProvider = ({ children }) => {
     consultAPI();
   }, [category]);
 
-  const searchChapters = async () => {
-    const url = `${import.meta.env.VITE_API}`;
+  const handleChangeSearch = async (search) => {
     try {
-      const { data } = await axios.get(url);
-      setInfo(data);
+      if (search.length > 3) {
+        const data = await axios.get(`http://localhost:8000/api/anime/filter?q=${search}`);
+        setInfo(data);
+      }
     } catch (error) {
       console.error(error);
     }
-  };
-
-  const handleChangeSearch = (e) => {
-    if (e.target.value.length > 3) searchChapters();
-
-    setSearchInfo(e.target.value);
   };
 
   const getInformationChapter = (chapter) => {
@@ -46,6 +40,15 @@ const AnimeProvider = ({ children }) => {
     setCategory(e.target.value);
   };
 
+  const getMessageScore = async (score) => {
+    try {
+      const { data } = await axios.get(`http://localhost:8000/api/anime/score?score=${score}`);
+      return data;
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
   return (
     <AnimeContext.Provider
       value={{
@@ -55,6 +58,7 @@ const AnimeProvider = ({ children }) => {
         getInformationChapter,
         informationChapter,
         handleChangeSearch,
+        getMessageScore
       }}
     >
       {children}

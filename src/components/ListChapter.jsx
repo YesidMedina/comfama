@@ -7,6 +7,7 @@ import { Information } from "./Information";
 
 export const ListChapter = () => {
   const { info } = useAnime();
+  console.log(info)
 
   return (
     <>
